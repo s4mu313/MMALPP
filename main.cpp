@@ -1,14 +1,13 @@
-# MMALPP
-This is a C++ wrapper for the MMAL library of Raspberry PI which is interfaced with OpenMAX. The purpose is to simplify the management of the resources like MMAL_COMPONENT_T, MMAL_PORT_T and so on.
+/// NOTE: THIS LIB IS IN-DEV SO IT'S NOT COMPLETE.
+/// IF YOU WANT TO TRY TO COMPILE THIS EXAMPLE YOU HAVE TO ADD SUPPORT TO:
+/// c++1z, std::thread and this libs: -lmmal_core -lmmal -lmmal_util
+/// -lmmal_components -lmmal_vc_client -lbcm_host -lvcos.
+///
+/// This is just one example of how you can use this OPENMAX / MMAL C++ WRAPPER.
+/// It's only the first commit, so probably there are (even if I hope not)
+/// a tons of bugs.
 
-THIS LIB IS IN-DEV SO IT'S NOT COMPLETE.
-YOU WANT TO TRY TO COMPILE THIS EXAMPLE YOU HAVE TO ADD SUPPORT TO: C++1z, std::thread and this libs: -lmmal_core -lmmal -lmmal_util -lmmal_components -lmmal_vc_client -lbcm_host -lvcos.
 
-This is just one example of how you can use this OPENMAX / MMAL C++ WRAPPER.
-It's only the first commit, so probably there are (even if I hope not)
-a tons of bugs.
-
-```
 #include <fstream>
 #include <iostream>
 #include <condition_variable>
@@ -190,4 +189,3 @@ int main()
 
     return 0;
 }
-```
