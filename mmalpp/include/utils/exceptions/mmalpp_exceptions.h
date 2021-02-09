@@ -13,7 +13,7 @@ namespace mmalpp_impl_ {
 /**
  * @brief If error code is one of them it throw an exception.
  */
-void e_check__(const MMAL_STATUS_T e_code_, const std::string& msg_)
+inline void e_check__(const MMAL_STATUS_T e_code_, const std::string& msg_)
 {
     switch (e_code_)
     {

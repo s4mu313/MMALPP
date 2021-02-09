@@ -23,7 +23,7 @@ namespace mmalpp_impl_ {
  * Note that connections are reference counted and creating a connection automatically
  * acquires a reference to it.
  */
-MMAL_CONNECTION_T*
+inline MMAL_CONNECTION_T*
 create_connection_(MMAL_PORT_T* src_, MMAL_PORT_T* dst_, uint32_t flags_)
 {
     MMAL_CONNECTION_T* connection_;
@@ -41,7 +41,7 @@ create_connection_(MMAL_PORT_T* src_, MMAL_PORT_T* dst_, uint32_t flags_)
  * although note that on creation, the connection automatically copies and commits the
  * output port's format to the input port.
  */
-void
+inline void
 enable_connection_(MMAL_CONNECTION_T* connection_)
 {
     if (MMAL_STATUS_T status = mmal_connection_enable(connection_); status)
@@ -53,7 +53,7 @@ enable_connection_(MMAL_CONNECTION_T* connection_)
 /**
  * Disable a connection.
  */
-void
+inline void
 disable_connection_(MMAL_CONNECTION_T* connection_)
 {
     if (MMAL_STATUS_T status = mmal_connection_disable(connection_); status)
@@ -67,7 +67,7 @@ disable_connection_(MMAL_CONNECTION_T* connection_)
  * Release an acquired reference on a connection. Triggers the destruction of the connection when
  * the last reference is being released.
  */
-void
+inline void
 destroy_connection_(MMAL_CONNECTION_T* connection_)
 {
     if (MMAL_STATUS_T status = mmal_connection_release(connection_); status)

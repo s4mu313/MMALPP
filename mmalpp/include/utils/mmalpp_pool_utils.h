@@ -17,7 +17,7 @@ namespace mmalpp_impl_ {
  * Resize a pool of MMAL_BUFFER_HEADER_T. This allows modifying either the number of
  * allocated buffers, the payload size or both at the same time.
  */
-void
+inline void
 pool_resize_(MMAL_POOL_T* pool_, std::size_t headers_, uint32_t size_)
 { if (MMAL_STATUS_T status = mmal_pool_resize(
                 pool_, headers_, size_); status)
@@ -28,7 +28,7 @@ pool_resize_(MMAL_POOL_T* pool_, std::size_t headers_, uint32_t size_)
  * This will also deallocate all of the memory which was allocated when creating or
  * resizing the pool.
  */
-void
+inline void
 pool_release_(MMAL_POOL_T* pool_)
 { mmal_pool_destroy(pool_); }
 
@@ -39,7 +39,7 @@ pool_release_(MMAL_POOL_T* pool_)
  * The resize() function can be used to increase or decrease the number of buffer
  * headers, or the size of the payload buffers, after creation of the pool.
  */
-MMAL_POOL_T*
+inline MMAL_POOL_T*
 create_pool_(std::size_t headers_, uint32_t size_)
 { return mmal_pool_create(headers_, size_); }
 
