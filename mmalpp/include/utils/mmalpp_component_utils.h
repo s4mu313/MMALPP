@@ -18,7 +18,7 @@ namespace mmalpp_impl_ {
  * Note that components are reference counted and creating a component automatically
  * acquires a reference to it.
  */
-MMAL_COMPONENT_T*
+inline MMAL_COMPONENT_T*
 create_component_(const char* name_)
 {
     MMAL_COMPONENT_T* component_;
@@ -34,7 +34,7 @@ create_component_(const char* name_)
  * Release an acquired reference on a component. Triggers the destruction of the component when
  * the last reference is being released.
  */
-void
+inline void
 release_component_(MMAL_COMPONENT_T* component_)
 { if (MMAL_STATUS_T status = mmal_component_release(component_); status)
         e_check__(status, "cannot release component: " +
@@ -43,7 +43,7 @@ release_component_(MMAL_COMPONENT_T* component_)
 /**
  * Enable processing on a component.
  */
-void
+inline void
 enable_component_(MMAL_COMPONENT_T* component_)
 { if (MMAL_STATUS_T status = mmal_component_enable(component_); status)
         e_check__(status, "cannot enable component: " +
@@ -52,7 +52,7 @@ enable_component_(MMAL_COMPONENT_T* component_)
 /**
  * Disable processing on a component.
  */
-void
+inline void
 disable_component_(MMAL_COMPONENT_T* component_)
 { if (MMAL_STATUS_T status = mmal_component_disable(component_); status)
         e_check__(status, "cannot disable component: " +

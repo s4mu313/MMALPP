@@ -18,7 +18,7 @@ namespace mmalpp_impl_ {
  * This is useful for instance if a component needs to return a buffer header but still needs
  * access to it for some internal processing (e.g. reference frames in video codecs).
  */
-void
+inline void
 acquire_buffer_header_ (MMAL_BUFFER_HEADER_T* buffer_)
 { mmal_buffer_header_acquire(buffer_); }
 
@@ -31,14 +31,14 @@ acquire_buffer_header_ (MMAL_BUFFER_HEADER_T* buffer_)
  * Once pre-release is complete the buffer header is recycled with
  * mmal_buffer_header_release_continue.
  */
-void
+inline void
 release_buffer_header_ (MMAL_BUFFER_HEADER_T* buffer_)
 { mmal_buffer_header_release(buffer_); }
 
 /**
  * Reset a buffer header. Resets all header variables to default values.
  */
-void
+inline void
 reset_buffer_header_ (MMAL_BUFFER_HEADER_T* buffer_)
 { mmal_buffer_header_reset(buffer_); }
 
@@ -48,7 +48,7 @@ reset_buffer_header_ (MMAL_BUFFER_HEADER_T* buffer_)
  * but it will also acquire a reference to the source buffer header which will only be
  * released once the replicate has been released.
  */
-void
+inline void
 replicate_buffer_header_ (MMAL_BUFFER_HEADER_T* buffer_src_,
                           MMAL_BUFFER_HEADER_T* buffer_dst_)
 { if (MMAL_STATUS_T status = mmal_buffer_header_replicate(

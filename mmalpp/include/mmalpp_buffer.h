@@ -311,7 +311,7 @@ private:
 };
 
 /// USED FOR DEBUG
-std::ostream& operator<<(std::ostream& os, const Buffer& b)
+inline std::ostream& operator<<(std::ostream& os, const Buffer& b)
 {
     for (auto i = b.begin(); i != b.end(); ++i)
         os << *i;

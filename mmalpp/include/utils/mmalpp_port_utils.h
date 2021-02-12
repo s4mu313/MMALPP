@@ -18,7 +18,7 @@ namespace mmalpp_impl_ {
  * the given callback must be NULL, while for a disconnected port,
  * the callback must be non-NULL.
  */
-void
+inline void
 enable_port_(MMAL_PORT_T* port_,
              MMAL_PORT_BH_CB_T cb_)
 { if (MMAL_STATUS_T status = mmal_port_enable(port_, cb_); status)
@@ -31,7 +31,7 @@ enable_port_(MMAL_PORT_T* port_,
  * If this is a connected output port, the input port to which it is connected shall
  * also be disabled. Any buffer pool shall be released.
  */
-void
+inline void
 disable_port_(MMAL_PORT_T* port_)
 { if (MMAL_STATUS_T status = mmal_port_disable(port_); status)
         e_check__(status, "cannot disable port: "
@@ -40,7 +40,7 @@ disable_port_(MMAL_PORT_T* port_)
 /**
  * Send a buffer header to a port.
  */
-void
+inline void
 port_send_buffer(MMAL_PORT_T* port_, MMAL_BUFFER_HEADER_T* buffer_)
 { if (MMAL_STATUS_T status = mmal_port_send_buffer(
                 port_, buffer_); status)
@@ -50,7 +50,7 @@ port_send_buffer(MMAL_PORT_T* port_, MMAL_BUFFER_HEADER_T* buffer_)
 /**
  * Commit format changes on a port.
  */
-void
+inline void
 commit_format_(MMAL_PORT_T* port_)
 { if (MMAL_STATUS_T status = mmal_port_format_commit(
                 port_); status)
@@ -61,7 +61,7 @@ commit_format_(MMAL_PORT_T* port_)
  * Shallow copy a format structure. It is worth noting that the extradata buffer
  * will not be copied in the new format.
  */
-void
+inline void
 copy_format_(MMAL_ES_FORMAT_T* src_, MMAL_ES_FORMAT_T* dst_)
 { mmal_format_copy(dst_, src_); }
 
@@ -75,7 +75,7 @@ copy_format_(MMAL_ES_FORMAT_T* src_, MMAL_ES_FORMAT_T* dst_)
  * It is also important to note that flushing will also reset the state of the port
  * and any processing which was buffered by the port will be lost.
  */
-void
+inline void
 flush_port_(MMAL_PORT_T* port_)
 { if (MMAL_STATUS_T status = mmal_port_flush(port_); status)
         e_check__(status, "cannot flush port "
@@ -84,7 +84,7 @@ flush_port_(MMAL_PORT_T* port_)
 /**
  * Set a parameter on a port.
  */
-void
+inline void
 set_parameters_to_port_(MMAL_PORT_T* port_,
                         MMAL_PARAMETER_HEADER_T* param_)
 { if (MMAL_STATUS_T status = mmal_port_parameter_set(
@@ -95,7 +95,7 @@ set_parameters_to_port_(MMAL_PORT_T* port_,
 /**
  * Set a parameter on a port.
  */
-void
+inline void
 set_boolean_to_port_(MMAL_PORT_T* port_,
                      uint32_t id_,
                      int32_t value_)
@@ -107,7 +107,7 @@ set_boolean_to_port_(MMAL_PORT_T* port_,
 /**
  * Set a parameter on a port.
  */
-void
+inline void
 set_uint64_to_port_(MMAL_PORT_T* port_,
                     uint32_t id_,
                     uint64_t value_)
@@ -119,7 +119,7 @@ set_uint64_to_port_(MMAL_PORT_T* port_,
 /**
  * Set a parameter on a port.
  */
-void
+inline void
 set_int64_to_port_(MMAL_PORT_T* port_,
                    uint32_t id_,
                    int64_t value_)
@@ -131,7 +131,7 @@ set_int64_to_port_(MMAL_PORT_T* port_,
 /**
  * Set a parameter on a port.
  */
-void
+inline void
 set_uint32_to_port_(MMAL_PORT_T* port_,
                     uint32_t id_,
                     uint32_t value_)
@@ -143,7 +143,7 @@ set_uint32_to_port_(MMAL_PORT_T* port_,
 /**
  * Set a parameter on a port.
  */
-void
+inline void
 set_int32_to_port_(MMAL_PORT_T* port_,
                    uint32_t id_,
                    int32_t value_)
@@ -155,7 +155,7 @@ set_int32_to_port_(MMAL_PORT_T* port_,
 /**
  * Set a parameter on a port.
  */
-void
+inline void
 set_rational_to_port_(MMAL_PORT_T* port_,
                       uint32_t id_,
                       int32_t num_,
@@ -169,7 +169,7 @@ set_rational_to_port_(MMAL_PORT_T* port_,
 /**
  * Set a parameter on a port.
  */
-void
+inline void
 set_string_to_port_(MMAL_PORT_T* port_,
                     uint32_t id_,
                     const std::string& value_)
@@ -188,7 +188,7 @@ set_string_to_port_(MMAL_PORT_T* port_,
  * The mmal_pool_resize() function can be used to increase or decrease the number of buffer
  * headers, or the size of the payload buffers, after creation of the pool.
  */
-MMAL_POOL_T*
+inline MMAL_POOL_T*
 port_pool_create_(MMAL_PORT_T* port_,
                   std::size_t headers_,
                   uint32_t size_)
@@ -199,7 +199,7 @@ port_pool_create_(MMAL_PORT_T* port_,
  * This will also deallocate all of the memory which was allocated when creating or
  * resizing the pool.
  */
-void
+inline void
 port_pool_release_(MMAL_PORT_T* port_,
                    MMAL_POOL_T* pool_)
 { mmal_port_pool_destroy(port_, pool_); }
@@ -207,7 +207,7 @@ port_pool_release_(MMAL_PORT_T* port_,
 /**
  * Send a Buffer to a specific port.
  */
-void
+inline void
 send_buffer_(MMAL_PORT_T* port_,
              MMAL_BUFFER_HEADER_T* buffer_)
 { if (MMAL_STATUS_T status = mmal_port_send_buffer(
